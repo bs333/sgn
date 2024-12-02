@@ -55,7 +55,7 @@ def evaluate_model(checkpoint_path, cifar_version="cifar10", num_classes=10):
 
 if __name__ == "__main__":
     # Path to the desired checkpoint file
-    checkpoint_file = "checkpoints/sgn_epoch_9.weights.h5"
+    checkpoint_file = "./model/final_model.weights.h5"
 
     # Evaluate the model on CIFAR-10
     evaluate_model(checkpoint_file, cifar_version="cifar10", num_classes=10)
