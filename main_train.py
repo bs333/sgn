@@ -79,74 +79,30 @@ def train_model(train_ds, epochs=10, num_classes=10):
     model = wide_resnet(num_classes)
     optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
 
-    # Define metrics
-    accuracy_metric = tf.keras.metrics.CategoricalAccuracy()
-    precision_metric = tf.keras.metrics.Precision()
-    recall_metric = tf.keras.metrics.Recall()
-
-    # DataFrame to store metrics
-    metrics_df = pd.DataFrame(columns=["Epoch", "Loss", "Accuracy", "Precision", "Recall", "F1-Score"])
-
     for epoch in range(epochs):
         print(f"\nEpoch {epoch + 1}/{epochs}")
         epoch_loss_sum = 0
         num_steps = 0
 
-        # Reset metrics at the start of each epoch
-        accuracy_metric.reset_state()
-        precision_metric.reset_state()
-        recall_metric.reset_state()
-
         for step, (images, labels) in enumerate(train_ds):
             # Perform training step
             loss = train_step(model, images, labels, optimizer)
             
-            # Update metrics
+            # Update loss
             epoch_loss_sum += loss.numpy()
             num_steps += 1
-            predictions = model(images, training=False)
-            accuracy_metric.update_state(labels, predictions)
-            precision_metric.update_state(labels, predictions)
-            recall_metric.update_state(labels, predictions)
 
             if step % 10 == 0:
                 print(f"Step {step}, Loss: {loss.numpy()}")
 
-        # Compute metrics for the epoch
+        # Compute and display average loss for the epoch
         avg_loss = epoch_loss_sum / num_steps
-        epoch_accuracy = accuracy_metric.result().numpy()
-        epoch_precision = precision_metric.result().numpy()
-        epoch_recall = recall_metric.result().numpy()
-        epoch_f1_score = 2 * (epoch_precision * epoch_recall) / (epoch_precision + epoch_recall + 1e-7)
-
-        # Display metrics
-        print(f"Epoch {epoch + 1} - Average Loss: {avg_loss:.4f}, "
-              f"Accuracy: {epoch_accuracy:.4f}, "
-              f"Precision: {epoch_precision:.4f}, "
-              f"Recall: {epoch_recall:.4f}, "
-              f"F1-Score: {epoch_f1_score:.4f}")
-
-        # Save metrics to DataFrame
-        metrics_df = pd.concat([
-            metrics_df,
-            pd.DataFrame([{
-                "Epoch": epoch + 1,
-                "Loss": avg_loss,
-                "Accuracy": epoch_accuracy,
-                "Precision": epoch_precision,
-                "Recall": epoch_recall,
-                "F1-Score": epoch_f1_score
-            }])
-        ], ignore_index=True)
+        print(f"Epoch {epoch + 1} - Average Loss: {avg_loss:.4f}")
 
         # Save checkpoint with proper extension
         os.makedirs("checkpoints", exist_ok=True)
         model.save_weights(f"checkpoints/sgn_epoch_{epoch}.weights.h5")
         print(f"Checkpoint saved for epoch {epoch + 1}")
-
-    # Save metrics to a CSV file
-    metrics_df.to_csv("training_metrics.csv", index=False)
-    print("Metrics saved to 'training_metrics.csv'")
 
 if __name__ == "__main__":
     # Paths to label files
