@@ -1,7 +1,6 @@
 import os
 import numpy as np
 import tensorflow as tf
-import tensorflow_probability as tfp
 from tensorflow.keras import layers, models
 
 # Log-ratio transformations
@@ -59,6 +58,11 @@ def load_combined_dataset(cifar_version, label_file, num_classes):
     train_ds = train_ds.shuffle(10000).batch(64)
     return train_ds
 
+# Gaussian noise (manual implementation)
+def add_gaussian_noise(inputs, mean=0.0, stddev=0.1):
+    noise = tf.random.normal(shape=tf.shape(inputs), mean=mean, stddev=stddev)
+    return inputs + noise
+
 # Training step
 @tf.function
 def train_step(model, images, labels, optimizer):
@@ -79,6 +83,8 @@ def train_model(train_ds, epochs=10, num_classes=10):
     for epoch in range(epochs):
         print(f"Epoch {epoch + 1}/{epochs}")
         for step, (images, labels) in enumerate(train_ds):
+            # Optionally, add Gaussian noise during training
+            images = add_gaussian_noise(images)
             loss = train_step(model, images, labels, optimizer)
             if step % 10 == 0:
                 print(f"Step {step}, Loss: {loss.numpy()}")
