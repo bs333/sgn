@@ -57,4 +57,10 @@ numpy
 pandas
 matplotlib
 scipy
+```
 
+Install them via:
+
+```bash
+pip install -r requirements.txt
+```
