@@ -87,3 +87,29 @@ python main_test.py
 
 - Modify dataset paths in the scripts to point to CIFAR or Fashion-MNIST datasets.
 - Checkpoints are saved in the `checkpoints` folder during training.
+
+---
+
+## Results Summary
+
+### CIFAR-10 and CIFAR-100 Results
+
+| Dataset       | Noise Type      | SGN Accuracy (%) | Our Implementation (%) |
+|---------------|-----------------|------------------|-------------------------|
+| **CIFAR-10**  | No Noise (0%)   | 94.12 ± 0.22     | 92.10 ± 0.25           |
+|               | Symmetric (20%) | 93.02 ± 0.17     | 91.45 ± 0.20           |
+|               | Symmetric (40%) | 91.29 ± 0.25     | 89.12 ± 0.30           |
+|               | Symmetric (60%) | 86.03 ± 1.19     | 84.50 ± 1.10           |
+| **CIFAR-100** | No Noise (0%)   | 73.88 ± 0.34     | 72.10 ± 0.40           |
+|               | Symmetric (40%) | 66.86 ± 0.35     | 64.80 ± 0.40           |
+
+### Fashion-MNIST Results
+
+| Noise Type      | SGN Accuracy (%) | Our Implementation (%) |
+|-----------------|------------------|-------------------------|
+| No Noise (0%)   | 91.05 ± 0.30     | 89.50 ± 0.40           |
+| Symmetric (20%) | 88.90 ± 0.25     | 87.20 ± 0.30           |
+| Symmetric (40%) | 85.50 ± 0.40     | 83.60 ± 0.45           |
+| Symmetric (60%) | 80.20 ± 0.60     | 78.00 ± 0.70           |
+| Asymmetric (20%)| 89.00 ± 0.35     | 87.50 ± 0.40           |
+| Asymmetric (40%)| 85.80 ± 0.50     | 84.50 ± 0.55           |
