@@ -11,7 +11,6 @@ This repository contains resources and implementations for the project and paper
 4. [Usage Instructions](#usage-instructions)
 5. [Results Summary](#results-summary)
 6. [Applications](#applications)
-7. [Citation](#citation)
 
 ---
 
