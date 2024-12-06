@@ -65,7 +65,7 @@ Install them via:
 pip install -r requirements.txt
 ```
 
-## Usage Information
+## Usage Instructions
 
 ### Training
 
