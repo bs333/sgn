@@ -1,6 +1,6 @@
 # Robust Classification via Regression for Learning with Noisy Labels
 
-This repository contains resources and implementations for the project **"Robust Classification via Regression for Learning with Noisy Labels"**, which explores a regression-based approach to tackle noisy labels in classification tasks. The project is built around benchmark datasets like CIFAR-10, CIFAR-100, and Fashion-MNIST.
+This repository contains resources and implementations for the project and paper **"Robust Classification via Regression for Learning with Noisy Labels"** by *Erik Englesson* and *Hossein Azizpour*, which explores a regression-based approach to tackle noisy labels in classification tasks. The project is built around benchmark datasets like CIFAR-10, CIFAR-100, and Fashion-MNIST.
 
 ---
 
@@ -113,3 +113,4 @@ python main_test.py
 | Symmetric (60%) | 80.20 ± 0.60     | 78.00 ± 0.70           |
 | Asymmetric (20%)| 89.00 ± 0.35     | 87.50 ± 0.40           |
 | Asymmetric (40%)| 85.80 ± 0.50     | 84.50 ± 0.55           |
+
