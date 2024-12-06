@@ -64,3 +64,26 @@ Install them via:
 ```bash
 pip install -r requirements.txt
 ```
+
+## Usage Information
+
+### Training
+
+Run the training script to train the model:
+
+```bash
+python main_train.py
+```
+
+### Testing
+
+Evaluate the model using:
+
+```bash
+python main_test.py
+```
+
+### Additional Notes
+
+- Modify dataset paths in the scripts to point to CIFAR or Fashion-MNIST datasets.
+- Checkpoints are saved in the `checkpoints` folder during training.
