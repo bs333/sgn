@@ -114,3 +114,31 @@ python main_test.py
 | Asymmetric (20%)| 89.00 ± 0.35     | 87.50 ± 0.40           |
 | Asymmetric (40%)| 85.80 ± 0.50     | 84.50 ± 0.55           |
 
+---
+
+## Applications
+
+## Applications
+
+The robust learning techniques proposed in this project have wide-ranging applications across various domains:
+
+### 1. **Medical Diagnosis**
+- Robust learning can enhance classification accuracy in medical imaging (e.g., X-rays, MRIs), where human errors may introduce noisy labels.
+- Applications include automated disease detection and diagnosis.
+
+### 2. **Autonomous Vehicles**
+- Real-world driving datasets often contain noisy annotations due to occlusions, lighting conditions, and sensor errors.
+- Robust methods improve the reliability of safety-critical applications, such as pedestrian detection and lane identification.
+
+### 3. **E-Commerce**
+- Product categorization on e-commerce platforms frequently suffers from mislabeled or incomplete data.
+- Robust classification can streamline recommendation systems and inventory management.
+
+### 4. **Fraud Detection**
+- Financial datasets often have mislabeled or ambiguous data entries.
+- The proposed regression-based framework can improve fraud detection systems by addressing data inconsistencies.
+
+### 5. **Natural Language Processing**
+- Text classification tasks, such as sentiment analysis or spam detection, can benefit from robust learning methods to mitigate noisy labels in large-scale datasets.
+
+By leveraging the strengths of regression-based classification and noise handling, these applications can achieve greater accuracy, reliability, and interpretability.
